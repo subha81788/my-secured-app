@@ -2,21 +2,16 @@
 
 # To start docker mongo and load data\
 docker run -d --rm --name mongo-docker -p 27017:27017 mongo\
-mongo\
-use testDB;\
-db.roles.insertMany([
-   { name: "USER" },
-   { name: "MODERATOR" },
-   { name: "ADMIN" },
-]);
 
-To test using Postman
+# To test using Postman
 
 1.
 http://localhost:8080/api/auth/signup
-Method: POST
+
+Method: POST\
 Content-Type: Application/json
-Payload
+
+Payload\
 {
 	"username": "subha81788",
 	"email": "subha81788@gmail.com",
@@ -26,9 +21,11 @@ Payload
 
 2.
 http://localhost:8080/api/auth/signup
-Method: POST
+
+Method: POST\
 Content-Type: Application/json
-Payload
+
+Payload\
 {
 	"username": "juhi92",
 	"email": "sanjukta92nbdp@gmail.com",
@@ -38,9 +35,11 @@ Payload
 
 3.
 http://localhost:8080/api/auth/signup
-Method: POST
+
+Method: POST\
 Content-Type: Application/json
-Payload
+
+Payload\
 {
 	"username": "sarmi83",
 	"email": "sarmi83@gmail.com",
@@ -50,12 +49,14 @@ Payload
 
 4.
 http://localhost:8080/api/auth/signup
-Method: POST
+
+Method: POST\
 Content-Type: Application/json
-Payload
+
+Payload\
 {
-	"username": "juhi92",
-	"email": "sanjukta92nbdp@gmail.com",
-	"password": "nabadwip",
+	"username": "subhnath",
+	"email": "subhashis.a.nath@capgemini.com",
+	"password": "ilovecoding",
 	"roles": ["user"] 
 }

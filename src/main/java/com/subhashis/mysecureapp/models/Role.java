@@ -8,8 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Document(collection="roles")
 public class Role {
     @Id
@@ -17,4 +15,8 @@ public class Role {
 
     @Field("name")
     private Authority authority;
+
+    public Role(Authority authority) {
+        this.authority = authority;
+    }
 }
