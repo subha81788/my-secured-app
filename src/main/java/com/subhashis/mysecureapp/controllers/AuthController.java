@@ -12,6 +12,7 @@ import com.subhashis.mysecureapp.repositories.UserRepository;
 import com.subhashis.mysecureapp.services.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -46,12 +47,12 @@ public class AuthController {
 
     private final JwtUtils jwtUtils;
 
-    @PostMapping("/signup")
+    @PostMapping(value = "/signup", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         if (userRepository.existsByUsername(signUpRequest.getUsername())) {
             return ResponseEntity
                     .badRequest()
-                    .body(new MessageResponse("Error: Username is already taken!"));
+                    .body(new MessageResponse("Error: Username is already in use!"));
         }
 
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
@@ -61,9 +62,9 @@ public class AuthController {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(),
-                encoder.encode(signUpRequest.getPassword()),
-                signUpRequest.getEmail());
+        var encodedPassword = encoder.encode(signUpRequest.getPassword());
+        log.debug("encoded password = " + encodedPassword);
+        User user = new User(signUpRequest.getUsername(), encodedPassword, signUpRequest.getEmail());
 
         Set<String> strRoles = signUpRequest.getRoles();
         log.debug("Roles provided for the user " + strRoles);

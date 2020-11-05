@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -23,6 +24,7 @@ public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent>
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
     private final MongoTemplate mongoTemplate;
+    private final PasswordEncoder encoder;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -43,7 +45,7 @@ public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent>
         roleRepository.insert(roles);
 
         var user1 = new User("subhnath",
-                "ilovecoding",
+                encoder.encode("ilovecoding"),
                 "subhashis.a.nath@capgemini.com",
                 new HashSet<>(List.of(new Role(Authority.ADMIN))));
 

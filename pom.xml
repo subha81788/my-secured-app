@@ -17,6 +17,7 @@
 	<properties>
 		<java.version>14</java.version>
         <jjwt.version>0.9.1</jjwt.version>
+		<passay.version>1.6.0</passay.version>
 	</properties>
 
 	<dependencies>
@@ -40,6 +41,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+        <!-- password strength validator recommended by OWASP library -->
+		<dependency>
+			<groupId>org.passay</groupId>
+			<artifactId>passay</artifactId>
+			<version>${passay.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>

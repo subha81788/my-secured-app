@@ -1,7 +1,7 @@
 # my-secured-app
 
-# To start docker mongo and load data\
-docker run -d --rm --name mongo-docker -p 27017:27017 mongo\
+# To start docker mongo and load data
+docker run -d --rm --name mongo-docker -p 27017:27017 mongo
 
 # To test using Postman
 
@@ -29,7 +29,7 @@ Payload\
 {
 	"username": "juhi92",
 	"email": "sanjukta92nbdp@gmail.com",
-	"password": "nabadwip",
+	"password": "pa$$word@123",
 	"roles": ["user","moderator"] 
 }
 
