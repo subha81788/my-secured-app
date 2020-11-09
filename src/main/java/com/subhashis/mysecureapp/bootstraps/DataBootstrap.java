@@ -49,7 +49,7 @@ public class DataBootstrap implements ApplicationListener<ContextRefreshedEvent>
                 "subhashis.a.nath@capgemini.com",
                 new HashSet<>(List.of(new Role(Authority.ADMIN))));
 
-        userRepository.insert(user1);
+        //userRepository.insert(user1);
 
         log.info("Data initialized");
     }

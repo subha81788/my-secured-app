@@ -1,6 +1,5 @@
 package com.subhashis.mysecureapp.payloads.response;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,7 +13,7 @@ public class JwtResponse {
     private String username;
     private String email;
     private List<String> roles;
-    private String type = "Bearer";
+    private final String type = "Bearer";
 
     public JwtResponse(String accessToken, String id, String username, String email, List<String> roles) {
         this.token = accessToken;
